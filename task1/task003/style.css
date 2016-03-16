@@ -23,7 +23,16 @@
 #middle{
 	width:100%;
 	padding: 20px;
-	
+	line-height: 2em;
+}
+#middle ul{
+	list-style: none;
+}
+#middle p,li{
+	text-indent: 2em;
+}
+#middle li a{
+	text-decoration: none;
 }
 #left{
 	width:158px;
