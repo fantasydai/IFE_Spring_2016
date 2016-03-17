@@ -40,6 +40,9 @@ body{
 /*line-1第一块样式*/
 #main{
 	margin-top: 30px;
+	overflow: hidden;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #938e8c;
 }
 #main #line-1{
 	position: relative;
@@ -216,7 +219,15 @@ body{
 	font-size: 12px;
 	color:#767777;
 	font-family: "SimSun";
-	line-height: 16px;
+	line-height: 17px;
+}
+#main #line-3 .left .left-content p:first-letter{
+	font-size: 70px;
+	color:#f5e327;
+	font-family: "Microsoft YaHei";
+	float:left;
+	line-height: 70px;
+	margin:0 5px 10px 0;
 }
 /*右半部分样式*/
 #main #line-3 .right{
@@ -251,4 +262,111 @@ body{
 	font-size: 26px;
 	color:#fff;
 	font-style: normal;
+}
+#main #line-3 .right .right-content{
+	width: 458px;
+	height: 298px;
+	background-color: #EAF1CF;
+	margin-top: 30px;
+	padding-top:20px;
+}
+#main #line-3 .right .right-content ul{
+	list-style: none;
+	margin:0 0 15px 50px;
+}
+#main #line-3 .right .right-content ul li{
+	font-size: 16px;
+	color:#5a5b5b;
+	font-family: "SimSun";
+	line-height: 40px;
+	position: relative;
+}
+#main #line-3 .right .right-content ul li:before{
+	position: absolute;
+	top: 17px;
+	left: -17px;
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 8px solid #10456b;
+}
+#main #line-3 .right .right-content ul li span{
+	font-size: 14px;
+	font-style: italic;
+	text-align: right;
+}
+#main #line-3 .right .right-content .number{
+	width:240px;
+	height:150px;
+	background-color: #DB3E75;
+	padding:10px 10px 0 10px;
+	margin-right:20px;
+	float:left;
+
+}
+#main #line-3 .right .right-content .number .zero{
+	font-size: 110px;
+	color:#fff;
+	font-family: "Microsoft YaHei";
+	float:left;
+	margin-right: 7px;
+}
+#main #line-3 .right .right-content .number .other-number{
+	float:left;
+	border-left: 2px solid #fff;
+	padding-left: 5px;
+	height:86px;
+	margin-top: 30px;
+}
+#main #line-3 .right .right-content .number .other-number p{
+	font-size: 21px;
+	color:#fff;
+	font-family: "SimHei";
+	line-height: 27px;
+	font-style: italic;
+}
+#main #line-3 .right .right-content .number .other-number .helloWorld{
+	font-size: 12px;
+	line-height: 14px;
+	font-style: normal;
+}
+#main #line-3 .right .right-content .last-content{
+	margin-top: 20px;
+	width:170px;
+	float:left;
+	position: relative;
+}
+#main #line-3 .right .right-content .last-content p{
+	font-size: 14px;
+	color:#5a5b5b;
+	font-family: "SimHei";
+	line-height: 16px;
+	font-style: italic;
+	text-indent: 2em;
+}
+#main #line-3 .right .right-content .last-content .quotation-mark{
+	font-size: 72px;
+	color:#d45d5c;
+	font-family: "SimHei";
+	position: absolute;
+	font-style:normal;
+}
+#main #line-3 .right .right-content .last-content .mark-1{
+	top:15px;
+	left:-185px;
+}
+#main #line-3 .right .right-content .last-content .mark-2{
+	top:95px;
+	left:-20px;;
+}
+#footer p{
+	margin-top: 5px;
+	font-size: 12px;
+	color:#d45d5c;
+	font-family: "SimHei";
+	font-weight: bold;
+	text-align: right;
 }
