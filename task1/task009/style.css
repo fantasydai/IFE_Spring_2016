@@ -43,7 +43,7 @@ body{
 /*侧边栏样式*/
 #sidebar{
 	width:260px;
-	height:900px;
+	height:1188px;
 	background:#2a2e3d;
 	padding:20px 0 0 0;
 	float:left;
@@ -178,9 +178,8 @@ body{
 #main{
 	background:#eeedec;
 	width:calc(100% - 260px);
-	height:1000px;
 	float:left;
-	mar
+	padding-bottom: 155px;
 }
 #main .main-title{
 	list-style: none;
@@ -208,10 +207,10 @@ body{
 	width:700px;
 	height:55px;
 	background-color:#fff;
-	padding:15px 190px 15px 30px;
+	padding:15px 160px 15px 30px;
 	background-image:url(images/transform.png);
 	background-repeat: no-repeat;
-	background-position: 352px 27px;
+	background-position: 349px 27px;
 	position:relative;
 	border:1px solid #dddfe1;
 }
@@ -228,7 +227,7 @@ body{
 	background-position: 93% center;
 	text-indent: 0.5em;
 	height:25px;
-	margin:0 40px 5px 0;
+	margin:0 37px 5px 0;
 }
 #main .query #query-item{
 	width:70px;
@@ -237,7 +236,7 @@ body{
 #main .query #query-item option{
 	text-align: center;
 }
-#main .query #buyer , #seller{
+#main .query #buyer{
 	width:120px;
 	margin-right: 60px;
 }
@@ -246,7 +245,7 @@ body{
 	margin-right: 60px;
 }
 #main .query .seller-label{
-	margin-left: 167px;
+	margin-left: 164px;
 }
 #main .query #date{
 	width:120px;
@@ -270,7 +269,7 @@ body{
 	font-size: 12px;
 	color:#fff;
 	position:absolute;
-	left:367px;
+	left:364px;
 	top:37px;
 }
 #main .query button{
@@ -287,13 +286,13 @@ body{
 }
 #main .time-list{
 	list-style: none;
-	width:920px;
+	width:890px;
 	overflow:hidden;
 	margin-bottom: 22px;
 }
 #main .time-list>li{
 	float:left;
-	width:114px;
+	width:110px;
 	height:65px;
 	border:1px solid #dddfe1;
 	border-bottom: none;
@@ -341,7 +340,7 @@ body{
 	background-image:url(images/turn_right.png);
 }
 #main .time-list .history{
-	width:136px;
+	width:128px;
 	margin-right: 0;
 	font-size: 12px;
 	font-family: "Microsoft YaHei";
@@ -353,13 +352,14 @@ body{
 }
 #main .statistic-list{
 	overflow:hidden;
-	width:920px;
+	width:890px;
+	margin-bottom: 14px;
 }
 #main .statistic-list>p{
 	font-size: 12px;
 }
 #main .statistic-list>li{
-	width:calc((920px - 90px) / 4);
+	width:calc((890px - 90px) / 4);
 	height:72px;
 	background:#fff;
 	float:left;
@@ -411,4 +411,326 @@ body{
 }
 #main .statistic-list .statistic-item4 p{
 	background:#e2cd46;
+}
+#main .project-list{
+	width:890px;
+	overflow:hidden;
+}
+#main .project-list>li{
+	height:355px;
+	float:left;
+	border:1px solid #dddfe1;
+	background:#fff;
+	box-sizing: border-box;
+	border-radius: 10px;
+	overflow:hidden;
+}
+#main .project-list>li .project-title{
+	height:40px;
+	line-height: 40px;
+	text-indent:21px;
+	background:#f4f5f7;
+	border-bottom: 1px solid #dddfe1;
+	font-size: 12px;
+	color:#afb0b0;
+}
+#main .project-list .project-1{
+	width:530px;
+	margin:0  9px 9px 0;
+	position:relative;
+}
+#main .project-list .project-1 ul{
+	margin:13px 0 0 20px;
+	overflow:hidden;
+}
+#main .project-list .project-1 ul>li{
+	float:left;
+	margin-right: 5px;
+	box-sizing: border-box;
+}
+#main .project-list .project-1 label{
+	width:85px;
+	height:28px;
+	display:block;
+	background:#ededf0;
+	border:1px solid #fff;
+	border-bottom:1px solid #dddfe1;
+	border-radius: 4px 4px 0 0;
+	text-align: center;
+	line-height: 28px;
+	font-size: 12px;
+	font-family: "Microsoft YaHei";
+	cursor:pointer;
+	z-index:1;
+	position:relative;
+}
+#main .project-list .project-1 input{
+	display:none;
+}
+#main .project-list .project-1 input:checked ~ label{
+	background:#fff;
+	border:1px solid #dddfe1;
+	border-bottom:1px solid #fff;
+	z-index: 9;
+}
+#main .project-list .project-1 ul .tab-content{
+	position:absolute;
+	left:58px;
+	top:110px;
+	padding:20px 38px;
+	border-collapse: collapse;
+	font-family: "SimSun";
+	color:#535353;
+	border:1px solid #dddfe1;
+	visibility:hidden;
+	z-index: 1;
+}
+#main .project-list .project-1 input:checked ~ .tab-content{
+	visibility:visible;
+	border:none;
+}
+#main .project-list .project-1 ul .tab-content td{
+	height:30px;
+	width:103px;
+	line-height: 30px;
+	text-align: center;
+}
+#main .project-list .project-1 .tab-content td:hover{
+	background:#f4f6f7;
+}
+#main .project-list .project-1 .table-container{
+	width:490px;
+	height:250px;
+	margin-left: 20px;
+	border:1px solid #dddfe1;
+	border-radius: 0 5px 5px 5px;
+	position:absolute;
+	top: 83px;
+}
+#main .project-list .project-2{
+	width:350px;
+	font-family: "Microsoft YaHei";
+	font-size: 12px;
+}
+#main .project-list .project-2 ul{
+	margin:17px 0 103px 35px;
+}
+#main .project-list .project-2 ul>li{
+	padding:0 0  8px 15px;
+}
+#main .project-list .project-2 ul>li::before{
+	display:block;
+	color:#c3c2c2;
+	margin-bottom: 7px;
+}
+#main .project-list .project-2 ul .title{
+	width:265px;
+	border-bottom: 1px solid #dddfe1;
+}
+#main .project-list .project-2 ul .title::before{
+	content:"标题";
+}
+#main .project-list .project-2 ul .price{
+	float:left;
+	width:80px;
+	border-right: 1px solid #dddfe1;
+}
+#main .project-list .project-2 ul .price::before{
+	content:"价格";
+}
+#main .project-list .project-2 ul .response{
+	width:202px;
+	float:left;
+}
+#main .project-list .project-2 ul .response::before{
+	content:"负责人";
+}
+#main .project-list .project-2 ul .detail{
+	clear:both;
+	border-top: 1px solid #dddfe1;
+}
+#main .project-list .project-2 ul .detail::before{
+	content:"详细描述";
+}
+#main .project-list .project-2 form{
+	margin-left: 35px;
+	padding-top: 13px;
+	border-top: 1px solid #dddfe1;
+	width:265px;
+}
+#main .project-list .project-2 form #secrect{
+	height:16px;
+	vertical-align:middle;
+}
+#main .project-list .project-2 form label{
+	color:#c3c2c2;
+}
+#main .project-list .project-2 form .search{
+	font-family: "SimHei";
+	width:50px;
+	height:25px;
+	border:none;
+	background:#388ac1;
+	color:#fff;
+	border-radius: 3px;
+	float:right;
+	margin-top: -8px;
+	cursor:pointer;
+
+}
+#main .project-list .calendar{
+	width:350px;
+	margin-right: 10px;
+}
+#main .project-list .calendar form{
+	margin:10px 0 10px 22px;
+}
+#main .project-list .calendar form select,input{
+	height:20px;
+	border:1px solid #dddfe1;
+	color:#636363;
+	border-radius: 3px;
+}
+#main .project-list .calendar form .year{
+	width:63px;
+}
+#main .project-list .calendar form .month{
+	width:85px;
+	text-indent: 20px;
+
+}
+#main .project-list .calendar form .mark-date{
+	width:75px;
+}
+#main .project-list .calendar form input{
+	width:65px;
+	background:#fff;
+	cursor:pointer;
+}
+#main .project-list .calendar form input:hover{
+	color:#fff;
+	background:#636363;
+}
+#main .project-list .calendar table{
+	margin-left: 22px;
+	border-top: 2px solid #d9eaf7;
+}
+#main .project-list .calendar table td,#main .project-list .calendar table th{
+	width:42px;
+	height:42px;
+	text-align: center;
+	font-size: 12px;
+}
+#main .project-list .calendar table th{
+	height:28px;
+	font-weight: normal;
+	border-bottom: 1px solid #dddfe1;
+}
+#main .project-list .calendar table td{
+	cursor:pointer;
+	box-sizing: border-box;
+}
+#main .project-list .calendar table td.blank{
+	cursor:default;
+}
+#main .project-list .calendar table td:hover{
+	border:1px solid #f5c62b;
+	background:#dddfe1;
+}
+#main .project-list .calendar table td.blank:hover{
+	border:none;
+	background:none;
+}
+#main .project-list .calendar table .weekend,.festival p{
+	color:#f50a0a;
+}
+#main .project-list .calendar table .weekend p{
+	color:#000;
+}
+#main .project-list .car{
+	width:530px;
+	height:355px;
+}
+#main .project-list .car table{
+	margin:15px 0 0 40px;
+	border-collapse: collapse;
+	height:274px;
+}
+#main .project-list .car table tr{
+	cursor:pointer;
+}
+#main .project-list .car table tr:hover{
+	background:#f4f5f7;
+}
+#main .project-list .car table td{
+	height:24px;
+	text-indent: 30px;
+	font-size: 12px;
+	color:#323333;
+	border:1px solid #c9cacb;
+}
+#main .project-list .car table .last-line td{
+	border-bottom: none;
+}
+#main .project-list .car table th{
+	height:24px;
+	font-size: 13px;
+	font-weight: normal;
+	text-indent: 20px;
+	border:1px solid #c9cacb;
+}
+#main .project-list .car table .column-1{
+	width:68px;
+}
+#main .project-list .car table .column-2{
+	width:92px;
+}
+
+#main .project-list .car table .column-3{
+	width:290px;
+}
+#main .project-list .car table .column-3 progress{
+	width:168px;
+	height:5px;
+	background:#dcdcdc;
+	color:#9fd8f4;/*IE10*/
+	float:right;
+	margin-right: 20px;
+	border:none;
+}
+#main .project-list .car table .column-3 progress::-webkit-progress-bar{
+	background:#dcdcdc;
+}
+#main .project-list .car table .column-3 progress::-moz-progress-bar {
+	background: #9fd8f4;
+}
+#main .project-list .car table .column-3 progress::-webkit-progress-value{
+	background:#9fd8f4;
+}
+#main .project-list .car table .column-3 .progress-1{
+	color:#ec6e51;/*IE10*/
+}
+#main .project-list .car table .column-3 .progress-1::-moz-progress-bar {
+	background: #ec6e51;
+}
+#main .project-list .car table .column-3 .progress-1::-webkit-progress-value{
+	background:#ec6e51;
+}
+#main .project-list .car table .column-3 .progress-2{
+	color:#ef8150;/*IE10*/
+}
+#main .project-list .car table .column-3 .progress-2::-moz-progress-bar {
+	background: #ef8150;
+}
+#main .project-list .car table .column-3 .progress-2::-webkit-progress-value{
+	background:#ef8150;
+}
+#main .project-list .car table .column-3 .progress-3{
+	color:#f1934f;/*IE10*/
+}
+#main .project-list .car table .column-3 .progress-3::-moz-progress-bar {
+	background: #f19e4f;
+}
+#main .project-list .car table .column-3 .progress-3::-webkit-progress-value{
+	background:#f19e4f;
 }
