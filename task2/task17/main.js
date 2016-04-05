@@ -43,11 +43,11 @@ var aqiSourceData = {
 };
 
 // 用于渲染图表的数据
-var chartData = {};
+var chartData = [];
 
 // 记录当前页面的表单选项
 var pageState = {
-  nowSelectCity: -1,
+  nowSelectCity: 0,
   nowGraTime: "day"
 }
 
@@ -71,6 +71,7 @@ function graTimeChange() {
         }
         target.className="checked";
   }
+  initAqiChartData();
   renderChart();
   // 设置对应数据
 
@@ -81,22 +82,29 @@ function graTimeChange() {
  * select发生变化时的处理函数
  */
 function citySelectChange() {
-  // 确定是否选项发生了变化 
-
+  // 确定是否选项发生了变化
+   var target=event.target;
+   if(target.nodeName="select"&&target.value!=pageState.nowSelectCity){
+      for(var i=0;i<Object.keys(aqiSourceData).length;i++){
+        if(target.value===Object.keys(aqiSourceData)[i]){
+            pageState.nowSelectCity=i;
+        }
+      }
+   }
+  initAqiChartData();
+  renderChart();
   // 设置对应数据
 
   // 调用图表渲染函数
-  if(target.value!=pageState.nowGraTime){
-        pageState.nowGraTime=target.value;
-  }
-  renderChart();
+
 }
 
 /**
  * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
  */
 function initGraTimeForm() {
-
+  var selectTime=document.getElementById("form-gra-time");
+  selectTime.addEventListener("click",graTimeChange,false);
 }
 
 /**
@@ -104,9 +112,17 @@ function initGraTimeForm() {
  */
 function initCitySelector() {
   // 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
-
+  var fragment=document.createDocumentFragment(),
+        selectCity=document.getElementById("city-select"),
+        cityList=Object.keys(aqiSourceData);
+  for(var i=0;i<cityList.length;i++){
+    var newCity=document.createElement("option");
+    newCity.innerHTML=cityList[i];
+    fragment.appendChild(newCity);
+  }
+  selectCity.appendChild(fragment);
   // 给select设置事件，当选项发生变化时调用函数citySelectChange
-
+  selectCity.addEventListener("change",citySelectChange,false);
 }
 
 /**
@@ -115,15 +131,38 @@ function initCitySelector() {
 function initAqiChartData() {
   // 将原始的源数据处理成图表需要的数据格式
   // 处理好的数据存到 chartData 中
+  var city=Object.keys(aqiSourceData)[pageState.nowSelectCity],
+        time=pageState.nowGraTime,
+        selectCity=Object.keys(aqiSourceData[city]),
+         selectData=aqiSourceData[city],
+         newValue=0,
+         weekLength=0;
+        chartData = [];
+      if(time==="day"){
+        for(var i=0;i<selectCity.length;i++){
+            chartData.push(aqiSourceData[city][selectCity[i]]);
+        }
+      }else if(time==="week"){
+        for(var i=0;i<selectCity.length;i++){
+            var date=new Date(selectCity[i]);
+            newValue+=aqiSourceData[city][selectCity[i]];
+            weekLength+=1;
+            if(date.getDay()===0){
+              chartData.push(Math.round(newValue/weekLength));
+              newValue=0;
+              weekLength=0;
+              continue;
+            }
+        }
+      }
 }
 
 /**
  * 初始化函数
  */
 function init() {
-  var field=document.getElementById("form-gra-time");
-  field.onclick=graTimeChange;
   initCitySelector();
-  initAqiChartData();
+  initGraTimeForm();
+   initAqiChartData();
 }
 init();
