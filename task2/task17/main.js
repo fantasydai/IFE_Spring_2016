@@ -62,7 +62,7 @@ function renderChart() {
         len=chartData.length,
         chartLen=chart.children.length;
         for(var j=0;j<chartLen;j++){
-            chart.removeChild(chart.childNodes[0]);
+            chart.removeChild(chart.children[0]);
         }
         for (var i = 0; i < len; i++) {
             var newItem=document.createElement("p"),
