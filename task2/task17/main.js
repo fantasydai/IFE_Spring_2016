@@ -44,6 +44,8 @@ var aqiSourceData = {
 
 // 用于渲染图表的数据
 var chartData = [];
+//用于渲染图标项目颜色
+var colorList=["#CCFF99","#99CCFF","#CCCCFF","#CC9966","#666666","#333333","#669999","#9999CC","#CCCCCC","#CCCC99","#99CC99","#339999","#336666"];
 
 // 记录当前页面的表单选项
 var pageState = {
@@ -55,7 +57,42 @@ var pageState = {
  * 渲染图表
  */
 function renderChart() {
-
+  var chart=document.getElementById("aqi-chart-wrap"),
+        fragment=document.createDocumentFragment(),
+        len=chartData.length,
+        chartLen=chart.children.length;
+        for(var j=0;j<chartLen;j++){
+            chart.removeChild(chart.childNodes[0]);
+        }
+        for (var i = 0; i < len; i++) {
+            var newItem=document.createElement("p"),
+                  title=document.createElement("div"),
+                  titleDate=document.createElement("p"),
+                  titleValue=document.createElement("p"),
+                  newSpan=document.createElement("span"),
+                  day=Object.keys(aqiSourceData[Object.keys(aqiSourceData)[0]]);
+                  randomNum=Math.floor(Math.random()*13);
+            if(chartData.length===3){
+              newItem.style.width="20%";
+              titleDate.innerHTML="Date：2016年"+(i+1)+"月";
+            }else if(chartData.length===13){
+              newItem.style.width="5%";
+              titleDate.innerHTML="Date：2016年第"+(i+1)+"周";
+            }else if(chartData.length>13){
+              newItem.style.width="0.6%";
+              titleDate.innerHTML="Date："+day[i];
+            }
+            titleValue.innerHTML="AQI:"+chartData[i];
+            title.appendChild(titleDate);
+            title.appendChild(titleValue);
+            title.className="title";
+            newItem.style.height=chartData[i]+"px";
+            newSpan.style.background=colorList[randomNum];
+            newItem.appendChild(newSpan);
+            newItem.appendChild(title);
+            fragment.appendChild(newItem);
+        }
+        chart.appendChild(fragment);
 }
 
 /**
@@ -134,9 +171,10 @@ function initAqiChartData() {
   var city=Object.keys(aqiSourceData)[pageState.nowSelectCity],
         time=pageState.nowGraTime,
         selectCity=Object.keys(aqiSourceData[city]),
-         selectData=aqiSourceData[city],
+        selectData=aqiSourceData[city],
          newValue=0,
-         weekLength=0;
+         weekLength=0,
+         monthLength=0;
         chartData = [];
       if(time==="day"){
         for(var i=0;i<selectCity.length;i++){
@@ -154,6 +192,17 @@ function initAqiChartData() {
               continue;
             }
         }
+      }else if(time==="month"){
+          for(var i=0;i<selectCity.length;i++){
+            newValue+=aqiSourceData[city][selectCity[i]];
+            monthLength+=1;
+            if(selectCity[i]==="2016-01-31"||selectCity[i]==="2016-02-29"||selectCity[i]==="2016-03-31"){
+              chartData.push(Math.round(newValue/monthLength));
+              newValue=0;
+              monthLength=0;
+              continue;
+            }
+          }
       }
 }
 
@@ -164,5 +213,6 @@ function init() {
   initCitySelector();
   initGraTimeForm();
    initAqiChartData();
+    renderChart();
 }
 init();
