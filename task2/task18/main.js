@@ -75,7 +75,8 @@ function numClick(){
 	if(target.nodeName==="LI"){
 		var index=[].indexOf.call(target.parentNode.children,target);
 		numList.removeChild(target);
-		inputList.splice(index,1);
+		var deleteNum=inputList.splice(index,1);
+		alert(deleteNum+" 被残忍抛弃了");
 	}
 }
 //给button绑定点击事件处理程序
@@ -83,8 +84,13 @@ function initButtonClick(){
 	var buttonArea=document.getElementById("button-area");
 	buttonArea.addEventListener("click",buttonClick,false);
 }
+//给LI元素绑定点击事件处理程序
+function initNumClick(){
+	numList.addEventListener("click",numClick,false);
+}
 //初始化函数
 function init(){
 	initButtonClick();
+	initNumClick();
 }
 init();
