@@ -1,4 +1,5 @@
 var orderList=[],//用来保存遍历后节点
+      treeList=[],//保存有效div节点
       lastTime,//记录上次点击按钮时间
       treeNodes=document.getElementsByTagName("div"),
       buttonArea=document.getElementById("button-area"),
@@ -6,8 +7,8 @@ var orderList=[],//用来保存遍历后节点
 
 //消除chrome中自动出现的shadow root对treeNodes的影响
 for (var i =0; i<treeNodes.length; i++) {
-	if(!treeNodes[i].className){
-		treeNodes.splice(i,1);
+	if(!(treeNodes[i].className=="")){
+		treeList.push(treeNodes[i]);
 	}
 }
 //生成二叉树节点函数
@@ -113,8 +114,8 @@ function buttonClick(){
 				alertText.innerHTML="";
 			orderList=[];
 			var tree=new BST();
-			for(var i=0;i<treeNodes.length;i++){
-				tree.insert(treeNodes[i]);
+			for(var i=0;i<treeList.length;i++){
+				tree.insert(treeList[i]);
 			}
 			lastTime=new Date();
 			switch(target.className){
