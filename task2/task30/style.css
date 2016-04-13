@@ -26,10 +26,10 @@
 	padding-left: 10px;
 	box-sizing: border-box;
 }
-#form #user-name.wrong-input{
+#form input.wrong-input{
 	border-color:#ff0000;
 }
-#form #user-name.right-input{
+#form input.right-input{
 	border-color:#62BC4B;
 }
 #form #validate{
