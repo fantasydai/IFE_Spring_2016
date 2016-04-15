@@ -30,7 +30,7 @@
 	z-index:30;
 	font-family: "SimHei";
 	font-size: 20px;
-	cursor:pointer;
+	cursor:move;
 }
 #surfaced>p.sub-surfaced{
 	text-align: center;
