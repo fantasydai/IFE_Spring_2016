@@ -8,19 +8,19 @@
 <body>
 	<div id="tip">
 		<p>您可以在输入框中允许输入如下指令：</p>
-		<p>GO：前进一格</p>
+		<p>GO n：前进n格</p>
 		<p>TUN LEF：向左转（逆时针旋转90度）</p>
 		<p>TUN RIG：向右转（顺时针旋转90度）</p>
 		<p>TUN BAC：向右转（旋转180度）</p>
-		<p>TRA LEF：向屏幕的左侧移动一格，方向不变</p>
-		<p>TRA TOP：向屏幕的上面移动一格，方向不变</p>
-		<p>TRA RIG：向屏幕的右侧移动一格，方向不变</p>
-		<p>TRA BOT：向屏幕的下面移动一格，方向不变</p>
-		<p>MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格</p>
-		<p>MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格</p>
-		<p>MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格</p>
-		<p>MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格</p>
-		<p>注：不区分大小写</p>
+		<p>TRA LEF n：向屏幕的左侧移动n格，方向不变</p>
+		<p>TRA TOP n：向屏幕的上面移动n格，方向不变</p>
+		<p>TRA RIG n：向屏幕的右侧移动n格，方向不变</p>
+		<p>TRA BOT n：向屏幕的下面移动n格，方向不变</p>
+		<p>MOV LEF n：方向转向屏幕左侧，并向屏幕的左侧移动n格</p>
+		<p>MOV TOP n：方向转向屏幕上面，向屏幕的上面移动n格</p>
+		<p>MOV RIG n：方向转向屏幕右侧，向屏幕的右侧移动n格</p>
+		<p>MOV BOT n：方向转向屏幕下面，向屏幕的下面移动n格</p>
+		<p>注：不区分大小写<br />步长n为正整数,省略时默认为1</p>
 	</div>
 	<table id="board" >
 		<tr>
@@ -172,7 +172,7 @@
 			<li style="margin-top: 0">1</li>
 
 		</ul>
-		<textarea id="order"></textarea>
+		<textarea id="order" onpaste="return false"></textarea>
 		<input type="button" id="move" value="执行">
 	</form>
 	<script type="text/javascript" src="main.js"></script>

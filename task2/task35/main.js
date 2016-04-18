@@ -6,12 +6,21 @@ var elements={
 	lineNumber:document.getElementById("line-num"),
 	orderList:[]
 };
+//处理输入指令函数
+function handleOrder(target){
+	var orderValue=target.value;
+	orderList=orderValue.split("\n");
+}
 //检查输入指令函数
 function checkOrder(value){
-	var orderList=["GO","TUN LEF","TUN RIG","TUN BAC","TRA LEF","TRA RIG","TRA TOP","TRA BOT","MOV LEF","MOV TOP","MOV RIG","MOV BOT"];
+	var tunOrderList=["TUN LEF","TUN RIG","TUN BAC"],
+	      otherOrderList=["GO","TRA LEF","TRA RIG","TRA TOP","TRA BOT","MOV LEF","MOV TOP","MOV RIG","MOV BOT"];
 	value=(value.trim()).toUpperCase();
-	if(orderList.indexOf(value)>=0){
+	if(tunOrderList.indexOf(value)>=0){
 		return value;
+	}else if(otherOrderList.indexOf(value.replace(/\s\d$/,""))>=0){
+		return parseInt(value.replace(/.*(\d)/,"$1"))?[value.replace(/\s\d/,""),parseInt(value.replace(/.*(\d)/,"$1"))]:[value,1];
+
 	}
 	return false;
 }
@@ -86,7 +95,7 @@ var runOrder={
 		},
 		moveLeft:function(){
 			if(this.node.style.transform=="rotateZ("+270+"deg)"){
-				this.go();
+				 this.go();
 			}else{
 			this.node.style.transform="rotateZ("+270+"deg)";
 			setTimeout(this.go,1000);
@@ -119,47 +128,76 @@ var runOrder={
 };
 //执行按钮点击事件处理程序
 function clickExcute(){
-	var orderValue=elements.order.value;
-	if(!checkOrder(orderValue)){
-		alert("输入指令有误，请重新输入");
-	}else{
-		switch(checkOrder(orderValue)){
-			case "GO":
-				runOrder.go();
-				break;
-			case "TUN LEF":
-				runOrder.turnLeft();
-				break;
-			case "TUN RIG":
-				runOrder.turnRight();
-				break;
-			case "TUN BAC":
-				runOrder.turnBack();
-				break;
-			case "TRA LEF":
-				runOrder.transLeft();
-				break;
-			case "TRA RIG":
-				runOrder.transRight();
-				break;
-			case "TRA TOP":
-				runOrder.transTop();
-				break;
-			case "TRA BOT":
-				runOrder.transBottom();
-				break;
-			case "MOV LEF":
-				runOrder.moveLeft();
-				break;
-			case "MOV RIG":
-				runOrder.moveRight();
-				break;
-			case "MOV TOP":
-				runOrder.moveTop();
-				break;
-			case "MOV BOT":
-				runOrder.moveBottom();
-				break;
+	handleOrder(elements.order);
+	for(var j=0;j<elements.lineNumber.children.length;j++){
+		elements.lineNumber.children[j].className="";
+	}
+	var index=0;
+	loopRun();
+	var clear=setInterval(loopRun,1000);
+	function loopRun(){
+		var subOrder=orderList.shift();
+		if(orderList.length>0||subOrder){
+			var orderResult=checkOrder(subOrder);
+			if(!orderResult){
+				elements.lineNumber.children[index].className="wrong";
+			}else if(typeof orderResult=="string"){
+				switch(orderResult){
+					case "TUN LEF":
+						runOrder.turnLeft();
+						break;
+					case "TUN RIG":
+						runOrder.turnRight();
+						break;
+					case "TUN BAC":
+						runOrder.turnBack();
+						break;
+				}
+			}else{
+				for(var i=0;i<orderResult[1];i++){
+					switch(orderResult[0]){
+						case "GO":
+							runOrder.go();
+							break;
+						case "TUN LEF":
+							runOrder.turnLeft();
+							break;
+						case "TUN RIG":
+							runOrder.turnRight();
+							break;
+						case "TUN BAC":
+							runOrder.turnBack();
+							break;
+						case "TRA LEF":
+							runOrder.transLeft();
+							break;
+						case "TRA RIG":
+							runOrder.transRight();
+							break;
+						case "TRA TOP":
+							runOrder.transTop();
+							break;
+						case "TRA BOT":
+							runOrder.transBottom();
+							break;
+						case "MOV LEF":
+							runOrder.moveLeft();
+							break;
+						case "MOV RIG":
+							runOrder.moveRight();
+							break;
+						case "MOV TOP":
+							runOrder.moveTop();
+							break;
+						case "MOV BOT":
+							runOrder.moveBottom();
+							break;
+					}
+				}
+			}
+			i++;
+		}else{
+			clearInterval(clear);
 		}
 	}
 }
@@ -174,16 +212,21 @@ function orderInput(){
 				var newLine=document.createElement("li");
 				newLine.innerHTML=lineNumber.children.length+1;
 				lineNumber.appendChild(newLine);
-				if(lineNumber.children.length>8){
-					lineNumber.children[0].style.marginTop=(parseInt(lineNumber.children[0].style.marginTop)-25)+"px";
-				}
 				break;
 			case 8:
 				if (orderValue[orderValue.length-1]==""){
-					lineNumber.children[0].style.marginTop=(parseInt(lineNumber.children[0].style.marginTop)+25)+"px";
+					 if(lineNumber.children.length>1){
+						lineNumber.removeChild(lineNumber.children[(lineNumber.children.length-1)]);
+					}
 				}
+				break;
 		}
 	}
+}
+//textarea区域滚动事件处理程序
+function scrollFunc(){
+	var top=event.target.scrollTop;
+	elements.lineNumber.children[0].style.marginTop=-top+"px";
 }
 //给button绑定事件处理函数
 function bindClickFunc(){
@@ -191,7 +234,8 @@ function bindClickFunc(){
 }
 //给textarea绑定输入事件处理程序
 function bindInputFunc(){
-	elements.order.addEventListener("keypress",orderInput,false);
+	elements.order.addEventListener("keydown",orderInput,false);
+	elements.order.addEventListener("scroll",scrollFunc,false);
 }
 //初始化函数
 function init(){
