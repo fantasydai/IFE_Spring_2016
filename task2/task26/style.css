@@ -1,0 +1,64 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	display: flex;
+	flex-flow:row nowrap;
+}
+#myCanvas{
+	background-color: transparent;
+	position:absolute;
+	border:
+}
+#myCanvas1{
+	flex:2;
+	border:2px solid #00BB00;
+	box-sizing: border-box;
+}
+#sideArea{
+	flex:1;
+	border:2px solid #00BB00;
+	text-align: center;
+	font-family: "SimHei";
+	color:#00F400;
+}
+#sideArea #Console{
+	height:300px;
+	border-bottom: 2px solid #00BB00;
+}
+#sideArea #Console #console-content{
+	height:258px;
+	overflow: auto;
+}
+#sideArea .title{
+	border-bottom: 2px solid #00BB00;
+	height:40px;
+	font-size: 25px;
+	line-height: 40px;
+	font-weight: bold;
+}
+#sideArea #planet .control{
+	height:200px;
+	margin-top: 50px;
+	display:flex;
+	flex-flow:column nowrap;
+}
+#sideArea #planet .control .ship-control{
+	flex:1;
+	margin:10px 0;
+}
+#sideArea #planet .control .ship-control button{
+	width:70px;
+	height:30px;
+	border:1px solid #00BB00;
+	background:#000;
+	color:#00BB00;
+	font-size: 15px;
+	font-family: "SimHei";
+	cursor:pointer;
+}
+#sideArea #planet .control .ship-control button:active{
+	position:relative;
+	top:1px;
+}
