@@ -1,12 +1,13 @@
 var init,
-      data={
+      data={//配置可选日期的上下限
         startDate:"1990/1/1",
         endDate:"2016/9/30"
-      };
+      },
+      defaultDate="2016/5/1";//设定日期的接口，指定具体日期
 (function(){
     var initialize=function(){//初始化渲染页面
-        var today=new Date();
-        drawCalendar(today.getFullYear(),today.getMonth()+1,today.getDate());
+        var today=new Date(defaultDate);
+        drawCalendar(today.getFullYear(),today.getMonth()+1,today.getDate(),today.getDay());
     };
     var dayArray=function(year,month){//创建存放日期的函数
         var firstDay=new Date(year,month-1,1).getDay(),//求出当月第一天是星期几
@@ -75,6 +76,9 @@ var init,
                                     }
                                     if(k%7===0||k%7===6){
                                             dayItem.className+=" weekend";
+                                    }
+                                    if(dayArr[k]===defaultDate){
+                                        dayItem.className+=" choosen";
                                     }
                                     fragment.appendChild(dayItem);
                             }

@@ -56,6 +56,10 @@
 #calendar a.day{
 	cursor:pointer;
 }
+#calendar a.day.choosen{
+	background:#C61B01;
+	color:#fff;
+}
 #calendar a.day.exceed{
 	background:#999;
 	color:#000;
