@@ -1,0 +1,63 @@
+#container{
+	background:#fff;
+	width:70%;
+	margin:100px auto;
+	padding:50px 20px 20px;
+	position:relative;
+}
+#container button.createNewSurvey{
+	position:absolute;
+	right:20px;
+	top:20px;
+	width:90px;
+	height:30px;
+	border:none;
+	border-radius: 2px;
+	background:#EE7419;
+	color:#fff;
+	padding-left: 20px;
+	background-image: url(../images/add.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 25px;
+	cursor:pointer;
+	outline: none;
+}
+#container button.createNewSurvey:active{
+	top:21px;
+}
+#container table{
+	border-collapse: collapse;
+	width:100%;
+}
+table tr{
+	height:50px;
+	width:100%;
+	border-bottom: 2px solid #E4E4E4;
+	cursor:pointer;
+	text-align: left;
+}
+table tr:hover{
+	background:#FFDFFF;
+}
+table tr>td:nth-child(1){
+	width:20px;
+}
+table tr>td:nth-child(2){
+	width:300px;
+}
+table tr>td:nth-child(4){
+	width:150px;
+}
+table tr td button{
+	width:70px;
+	height:25px;
+	background:#fff;
+	border:1px solid #999;
+	border-radius: 2px;
+}
+table tr td button:hover{
+	background:#EE7419;
+	color:#fff;
+	cursor:pointer;
+}

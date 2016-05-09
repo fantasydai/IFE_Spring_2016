@@ -1,0 +1,36 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background:#E4E4E4;
+}
+header{
+	width:100%;
+	height:50px;
+	background: #EE7419;
+	font-family: "SimSon";
+}
+header p{
+	font-size: 20px;
+	font-weight: bold;
+	color:#fff;
+	float:left;
+	line-height: 50px;
+	padding-left: 25px;
+	margin:0 40px 0 50px;
+	background:url(../images/logo-1.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 20px;
+}
+header a{
+	float:left;
+	text-decoration: none;
+	color:#fff;
+	font-size: 15px;
+	line-height: 55px;
+}
+header a:hover{
+	color:#99CC33;
+}
